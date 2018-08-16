@@ -29,8 +29,30 @@ npm install
 
 ## Run test
 
+You can use the following when running a test
+
+| Arguments | Description |
+| --------- | ----------- |
+| --url | Specifies the URL for which to run the test|
+| --filePath | Path to the file that contains a list of URLs to run the test for|
+| --stage | Enable DTM stage library |
+
+Examples:
+
+- Specify a unique URL
+
 ```
 npm test --url=valid_url
+```
+
+- Specify path of file that contains list of URLs
+```
+npm test --filePath=path/to/file.txt
+```
+
+- Specify to load DTM staging library
+```
+npm test --filePath=path/to/file.txt --stage=true
 ```
 
 ## Test ouputs
@@ -76,3 +98,11 @@ Validate the DTM implementation for URL https://www.example.com
 
 npm ERR! Test failed.  See above for more details.
 ```
+
+## Screenshots
+
+The test `√ Userzoom feedback button displayed` will take a screentshot and it will be placed inside `test/screenshots`
+
+## Reporting
+
+On top of the logs in the console, am html and json report will be generated under report `mochaawesoome-report`.

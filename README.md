@@ -26,6 +26,12 @@ You will need node.js and npm install on your machine.
 ```
 npm install
 ```
+If during the install you get an errorlike `ERROR: Failed to download Chromium`  while downloading chromium then before running `npm install` use the following:
+
+```
+npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
+npm install
+```
 
 ## Run test
 

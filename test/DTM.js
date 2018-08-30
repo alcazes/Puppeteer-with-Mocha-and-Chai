@@ -40,13 +40,12 @@ urls.forEach(function(url) {
 				window.localStorage.setItem("sdsat_debug", true);
 				if (typeof process.env.npm_config_stage !== 'undefined' && process.env.npm_config_stage !== null && process.env.npm_config_stage === 'true' ) {
 					window.localStorage.setItem("sdsat_stagingLibrary", true);
-				}
-				
+				}	
 			});
 			// Capture all logs in console
 			page.on('console', msg => {
 				logs.push(msg.text());
-			})
+			});
 			// Navidate to page
 			await page.goto(url, {waitUntil: 'networkidle2'});
 			// Get _satellite object details
@@ -98,6 +97,6 @@ urls.forEach(function(url) {
 			await satelliteHandle.dispose();
 			await page.close();	
 			await browser.close();
-		})
+		});
 	});
 });

@@ -87,8 +87,8 @@ urls.forEach(function(url) {
 			var userZoom = await page.$$('div#uz_ft');
 			var regex = /^.+\/([^\/].+)\/([^\/].+)\.html$/;
 			var group = url.match(regex);
-			var imagePath = 'test/screenshots/' + group[1] + '_--_' + group[2] + '_userZoom.png';
-			await page.screenshot({path: imagePath });
+			var imagePath = 'tests/screenshots/' + group[1] + '_--_' + group[2] + '_userZoom.png';
+			await page.screenshot({path: imagePath , fullPage: true});
 
 			expect(userZoom).is.not.empty;
 		});

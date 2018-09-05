@@ -4,7 +4,10 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "test": "mocha --reporter mochawesome --timeout 50000 --recursive test"
+    "test": "mocha --reporter mochawesome --timeout 50000 --recursive tests",
+    "test-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/example_dtm.js",
+    "test-without-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/DTM.js",
+    "test-single": "mocha --reporter mochawesome --timeout 50000 --recursive"
   },
   "author": "",
   "license": "ISC",

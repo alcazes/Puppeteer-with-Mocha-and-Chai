@@ -200,6 +200,7 @@ template.makeSuite('Test suite 1', async function () {
 |dtmLibraryNameExist(obj)| Validate that DTM _satellite object has a valid library name| Make sure to pass **this** when using `makeSuite` |
 |isAnalyticsToolLoaded(obj)| Validate that DTM loaded Adobe Analytics tool successfully| Make sure to pass **this** when using `makeSuite` |
 |isVisitorIDToolLoaded(obj)| Validate that DTM loaded Visitor ID services tool successfully | Make sure to pass **this** when using `makeSuite` |
+|isRuleFired(obj, ruleName)| Validate that DTM fire the specified rule | Make sure to pass **this** when using `makeSuite` for obj, ruleName should be the name of the rule that you can find in DTM |
 
 ### Puppeteer Utils
 
@@ -222,3 +223,6 @@ template.makeSuite('Test suite 1', async function () {
 | ----- | ----------- | -------- |
 |isElementPresent(obj,element)| Validate that specific html element exist|use **this** for **obj**. For element specific the html elemen i.e: 'div#uz_ft'|
 |takeScreenshot(obj,isFullPage,fileName)| Take a screenshot of the page| use **this** for **obj**. isFullPage indicates if you want to take screenshot of full page. fileName will be the name appended to the final fileName|
+|isAdobeAnalyticsRequestSent(obj)|Validate that at least one Adobe Analytics request was sent| use **this** for **obj**. |
+|validateAdobeAnalyticsRequestTotal(obj, total)| Validate that the number of Adobe Analytics request sent in equal to the total|use **this** for **obj**. Total should be the total number of requests that you expect|
+|lastAdobeAnalyticsRequestContains(obj, param, value)| Validatet that last Adobe Analytics request contains the specified param value pair|use **this** for **obj**. param should be the name of the param. value should be the value for the param|

@@ -27,4 +27,21 @@ template.makeSuite('Test suite 1', async function () {
         await utils.takeScreenshot(this, false, 'userzoom2')
         await utils.isElementPresent(this, 'div#uz_ft');
     });
+
+    it('Rul Global - Tag helper fired', async function () {
+        await dtm.isRuleFired(this, 'Global - Tag helper');
+    });
+
+    it('Adobe Analytics request sent', async function () {
+        await utils.isAdobeAnalyticsRequestSent(this);
+    });
+
+    it('Only one Adobe Analytics request sent', async function () {
+        await utils.validateAdobeAnalyticsRequestTotal(this, 1);
+    });
+
+    it('Last Adobe Analytics request contains param AQE set to 1', async function () {
+        await utils.lastAdobeAnalyticsRequestContains(this, 'AQE', '1');
+    });
+
 });

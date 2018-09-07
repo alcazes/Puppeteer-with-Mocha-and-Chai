@@ -29,11 +29,18 @@ DTM.prototype.isVisitorIDToolLoaded = async function (obj) {
     let regexCreate = /^SATELLITE: Visitor ID: Create instance using mcOrgId:.+$/;
     let  regexVariables = /^SATELLITE: Visitor ID: Set variables:.+$/;
     let instanceLog = obj.logs.filter(log => log.match(regexCreate));
-    var variablesLog = obj.logs.filter(log => log.match(regexVariables));
+    let variablesLog = obj.logs.filter(log => log.match(regexVariables));
 
     expect(obj.logs.includes('SATELLITE: Visitor ID: Initializing tool')).to.be.true;
     expect(instanceLog).to.have.length.greaterThan(0);
     expect(variablesLog).to.have.length.greaterThan(0);
+}
+
+DTM.prototype.isRuleFired = async function (obj, ruleName) {
+    let regexRuleFired = new RegExp('SATELLITE: Rule "' + ruleName +'" fired.');
+    let rule = obj.logs.filter(log => log.match(regexRuleFired));
+    
+    expect(rule).to.have.length.greaterThan(0);
 }
 
 module.exports = new DTM();

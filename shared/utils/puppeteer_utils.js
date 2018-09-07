@@ -1,6 +1,7 @@
 const {
     expect
 } = require('chai');
+const urlUtil = require('url');
 
 var Utils = function () {};
 
@@ -17,6 +18,22 @@ Utils.prototype.takeScreenshot = async function (obj, isFullPage, fileName) {
         path: imagePath,
         fullPage: isFullPage
     });
+}
+
+Utils.prototype.isAdobeAnalyticsRequestSent = async function (obj) {
+    expect(obj.analyticsRequests).to.have.length.greaterThan(0);
+}
+
+Utils.prototype.validateAdobeAnalyticsRequestTotal = async function (obj, total) {
+    expect(obj.analyticsRequests.length).to.equal(total);
+}
+
+Utils.prototype.lastAdobeAnalyticsRequestContains = async function (obj, param, value) {
+    let lastRequest = obj.analyticsRequests[obj.analyticsRequests.length - 1];
+    let queries = urlUtil.parse(lastRequest,true).query;
+    
+    expect(queries).have.property(param);
+    expect(queries[param]).to.be.equal(value);
 }
 
 module.exports = new Utils();

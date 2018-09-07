@@ -34,8 +34,17 @@ Template.prototype.makeSuite = function (name, tests) {
             describe(`Validate the implementation for URL ${url}`, async function () {
                 before(async function () {
                     this.logs = [];
+                    this.analyticsRequests = [];
                     this.browser = await puppeteer.launch();
                     this.page = await this.browser.newPage();
+                    await this.page.setRequestInterception(true);
+                    this.page.on('request', interceptedRequest => {
+                        //Adobe Analytics request
+                        if(interceptedRequest.url().includes('b/ss')) {
+                            this.analyticsRequests.push(interceptedRequest.url());
+                        }
+                        interceptedRequest.continue();
+                    });
                     // Enable debug logging of DTM
                     // Enable stage library
                     this.page.evaluateOnNewDocument(function () {

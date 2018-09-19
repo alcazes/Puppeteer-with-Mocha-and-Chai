@@ -2,24 +2,15 @@
 
 ## Summary
 
-This project uses [Puppeteer](https://developers.google.com/web/tools/puppeteer/) to automate the testing of Adobe DTM implementation.
+This project uses [Puppeteer](https://developers.google.com/web/tools/puppeteer/) to automate the testing of website code implementation. (i.e: using Adobe DTM or Adobe Launch to deploy marketing tags).
 
 [Mocha](https://mochajs.org/) testing framework is used to run the tests.
 
-[Chai](http://www.chaijs.com/) assertion lirary is used. We are using expect in a BDD format.
-
-The following are tested:
-
-    √ _satellite object exist
-    √ DTM is initialized
-    √ DTM library name exist
-    √ DTM Analytics tool is loaded
-    √ DTM Visitor ID services tool is loaded
-    √ Userzoom feedback button displayed (also takes a screenshot if UserZoom is present under test/screenshots)
+[Chai](http://www.chaijs.com/) assertion lirary is used. We are using `expect` in a BDD format.
 
 ## Requirements
 
-You will need node.js and npm install on your machine.
+You will need node.js and npm installed on your machine.
 
 ## Intall 
 
@@ -33,75 +24,11 @@ npm config set puppeteer_download_host=https://npm.taobao.org/mirrors
 npm install
 ```
 
-## Run test
+## Create tests
 
-You can use the following arguments when running a test
-
-| Arguments | Description |
-| --------- | ----------- |
-| --url | Specifies the URL for which to run the test|
-| --filePath | Path to the file that contains a list of URLs to run the test for|
-| --stage | Enable DTM stage library |
-
-| npm commands | Description |
-| ------------ | ----------- |
-| npm test | run all tests under **tests** folder|
-| npm run test-template| run specific test suite **example_dtm.js** |
-| npm run test-without-template| run specific test suite **DTM.js** |
-| npm run test-single .\tests\file.js | run specific test suite|
-Examples:
-
-- Specify a unique URL
-
-```
-npm test --url=valid_url
-```
-or
-```
-npm run test-template --url=valid_url
-```
-or
-```
-npm run test-without-template --url=valid_url
-```
-or
-```
-npm run test-single .\tests\example_dtm.js --url=valid_url
-```
-
-- Specify path of file that contains list of URLs
-```
-npm run test --filePath=path/to/file.txt
-```
-or
-```
-npm run test-template --filePath=path/to/file.txt
-```
-or
-```
-npm run test-without-template --filePath=path/to/file.txt
-```
-or
-```
-npm run test-single .\tests\example_dtm.js --filePath=path/to/file.txt
-```
-
-- Specify to load DTM staging library
-```
-npm test --filePath=path/to/file.txt --stage=true
-```
-or
-```
-npm run test-template --filePath=path/to/file.txt --stage=true
-```
-or
-```
-npm run test-without-template --filePath=path/to/file.txt --stage=true
-```
-or
-```
-npm run test-single .\tests\example_dtm.js --filePath=path/to/file.txt --stage=true
-```
+* [Create test suites](docs/create_test_suites.md)
+* [Test utils](docs/test_utils.md)
+* [Run tests](docs/run_tests.md)
 
 ## Test ouputs
 
@@ -154,75 +81,3 @@ The test `√ Userzoom feedback button displayed` will take a screentshot and it
 ## Reporting
 
 On top of the logs in the console, am html and json report will be generated under report `mochaawesoome-report`.
-
-## Create tests using template
-
-You can create a suite of tests using a shared template that will initialize puppeteer for you.
-
-You can then create the tests that you want to run.
-
-### Use template
-
-```javascript
-//Make sure to load the shared template
-const template = require('../shared/template.js');
-
-template.makeSuite('Test suite 1', async function () {
-    it('Name of test', async function() {
-        //Place your assertion here
-    });
-});
-```
-
-**You can use the puppeteer object by using this. this contains all objects initialized in template.js**
-
-### DTM utils
-
-Several DTM utils have been created to do general DTM assertions
-
-```javascript
-//Make sure to load the shared template
-const template = require('../shared/template.js');
-//Import DTM utils
-const dtm = require('../shared/utils/dtm_utils.js');
-
-template.makeSuite('Test suite 1', async function () {
-    it('Name of test', async function() {
-        await dtm.satelliteObjectExist(this);
-    });
-});
-```
-
-| Utils | Description |Parameters|
-| ----- | ----------- | -------- |
-|satelliteObjectExist(obj)| Validate that DTM _satellite object exist| Make sure to pass **this** when using `makeSuite` |
-|isDtmInitialized(obj)| Validate that DTM _satellite object is initialized| Make sure to pass **this** when using `makeSuite` |
-|dtmLibraryNameExist(obj)| Validate that DTM _satellite object has a valid library name| Make sure to pass **this** when using `makeSuite` |
-|isAnalyticsToolLoaded(obj)| Validate that DTM loaded Adobe Analytics tool successfully| Make sure to pass **this** when using `makeSuite` |
-|isVisitorIDToolLoaded(obj)| Validate that DTM loaded Visitor ID services tool successfully | Make sure to pass **this** when using `makeSuite` |
-|isRuleFired(obj, ruleName)| Validate that DTM fire the specified rule | Make sure to pass **this** when using `makeSuite` for obj, ruleName should be the name of the rule that you can find in DTM |
-
-### Puppeteer Utils
-
-Several Puppeteer utils have been created.
-
-```javascript
-//Make sure to load the shared template
-const template = require('../shared/template.js');
-//Import Puppeteer utils
-const utils = require('../shared/utils/puppeteer_utils.js');
-
-template.makeSuite('Test suite 1', async function () {
-    it('Name of test', async function() {
-        await utils.takeScreenshot(this, false, 'userzoom2')
-    });
-});
-```
-
-| Utils | Description |Parameters|
-| ----- | ----------- | -------- |
-|isElementPresent(obj,element)| Validate that specific html element exist|use **this** for **obj**. For element specific the html elemen i.e: 'div#uz_ft'|
-|takeScreenshot(obj,isFullPage,fileName)| Take a screenshot of the page| use **this** for **obj**. isFullPage indicates if you want to take screenshot of full page. fileName will be the name appended to the final fileName|
-|isAdobeAnalyticsRequestSent(obj)|Validate that at least one Adobe Analytics request was sent| use **this** for **obj**. |
-|validateAdobeAnalyticsRequestTotal(obj, total)| Validate that the number of Adobe Analytics request sent in equal to the total|use **this** for **obj**. Total should be the total number of requests that you expect|
-|lastAdobeAnalyticsRequestContains(obj, param, value)| Validatet that last Adobe Analytics request contains the specified param value pair|use **this** for **obj**. param should be the name of the param. value should be the value for the param|

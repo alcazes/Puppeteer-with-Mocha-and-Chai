@@ -5,8 +5,8 @@
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter mochawesome --timeout 50000 --recursive tests",
-    "test-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/example_dtm.js",
-    "test-without-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/DTM.js",
+    "test-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/examples/example_dtm.js",
+    "test-without-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/examples/DTM.js",
     "test-single": "mocha --reporter mochawesome --timeout 50000 --recursive",
     "test-json": "mocha --reporter mochawesome --timeout 50000 --recursive shared/templateJson.js"
   },

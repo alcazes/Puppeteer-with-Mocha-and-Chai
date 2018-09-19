@@ -51,6 +51,7 @@ Using the JSON template:
 ```
 
 DTM utils contain the following methods that you can use:
+
 | Utils | Description |Parameters|
 | ----- | ----------- | -------- |
 |`satelliteObjectExist(obj)`| Validate that DTM _satellite object exist| Make sure to pass **this** when using `makeSuite`, no parameters needs to be specified when using JSON template |
@@ -104,6 +105,7 @@ Using the JSON template:
 ```
 
 Launch utils contain the following methods that you can use:
+
 | Utils | Description |Parameters|
 | ----- | ----------- | -------- |
 |`satelliteObjectExist(obj)`| Validate that Launch _satellite object exist| Make sure to pass **this** when using `makeSuite`, no parameters needs to be specified when using JSON template |
@@ -152,6 +154,7 @@ Using the JSON template:
 ```
 
 Puppeteer utils contain the following methods that you can use:
+
 | Utils | Description |Parameters|
 | ----- | ----------- | -------- |
 |`isElementPresent(obj,element)`| Validate that specific html element exist|use **this** for **obj**, , no parameters needs to be specified when using JSON template. For element specific the html elemen i.e: 'div#uz_ft'|

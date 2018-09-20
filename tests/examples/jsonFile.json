@@ -1,0 +1,21 @@
+{
+    "suites": [
+        {
+            "description": "Validate rule is fired",
+            "tests": [
+                {
+                    "name": "DTM fired rule",
+                    "asserts": [
+                        {
+                            "type":"dtm",
+                            "method":"isRuleFired",
+                            "params":[
+                                "Global"
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ]
+}

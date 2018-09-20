@@ -48,7 +48,9 @@ Template.prototype.makeSuite = function (name, tests) {
                     // Enable debug logging of DTM
                     // Enable stage library
                     this.page.evaluateOnNewDocument(function () {
+                        // Enable debug for DTM and Launch
                         window.localStorage.setItem("sdsat_debug", true);
+                        window.localStorage.setItem("com.adobe.reactor.debug", true);
                         if (typeof process.env.npm_config_stage !== 'undefined' && process.env.npm_config_stage !== null && process.env.npm_config_stage === 'true') {
                             window.localStorage.setItem("sdsat_stagingLibrary", true);
                         }

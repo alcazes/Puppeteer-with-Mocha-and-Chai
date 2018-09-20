@@ -1,6 +1,6 @@
-const template = require('../shared/template.js');
-const dtm = require('../shared/utils/dtm_utils.js');
-const utils = require('../shared/utils/puppeteer_utils.js');
+const template = require('../../shared/template.js');
+const dtm = require('../../shared/utils/dtm_utils.js');
+const utils = require('../../shared/utils/puppeteer_utils.js');
 
 template.makeSuite('Test suite 1', async function () {
     it('_satellite object exist', async function() {

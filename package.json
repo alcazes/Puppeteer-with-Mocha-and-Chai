@@ -1,13 +1,14 @@
 {
   "name": "puppeterwithmocha",
-  "version": "1.0.0",
+  "version": "1.3.0",
   "description": "",
   "main": "index.js",
   "scripts": {
     "test": "mocha --reporter mochawesome --timeout 50000 --recursive tests",
-    "test-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/example_dtm.js",
-    "test-without-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/DTM.js",
-    "test-single": "mocha --reporter mochawesome --timeout 50000 --recursive"
+    "test-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/examples/example_dtm.js",
+    "test-without-template": "mocha --reporter mochawesome --timeout 50000 --recursive tests/examples/DTM.js",
+    "test-single": "mocha --reporter mochawesome --timeout 50000 --recursive",
+    "test-json": "mocha --reporter mochawesome --timeout 50000 --recursive shared/templateJson.js"
   },
   "author": "",
   "license": "ISC",
@@ -15,7 +16,7 @@
     "chai": "^4.1.2",
     "mocha": "^5.2.0",
     "mochawesome": "^3.0.3",
-    "puppeteer": "^1.7.0",
+    "puppeteer": "^1.8.0",
     "url": "^0.11.0"
   }
 }
